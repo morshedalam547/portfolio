@@ -1,5 +1,5 @@
 /* =====================
-   Global Styles
+   RESET & GLOBAL
 ===================== */
 * {
     margin: 0;
@@ -10,38 +10,95 @@
 
 body {
     background: #f4f6f8;
-    color: #2d2d2d;
+    color: #1f2933;
     line-height: 1.6;
+    transition: background 0.4s ease, color 0.4s ease;
 }
 
 /* =====================
-   Navbar
+   DARK MODE TOGGLE
+===================== */
+#dark-toggle {
+    display: none;
+}
+
+.dark-btn {
+    position: fixed;
+    top: 22px;
+    right: 22px;
+    width: 44px;
+    height: 44px;
+    background: #111;
+    border-radius: 50%;
+    cursor: pointer;
+    z-index: 999;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    transition: all 0.3s ease;
+}
+
+.dark-btn i {
+    position: absolute;
+    font-size: 16px;
+    color: #fff;
+    transition: all 0.3s ease;
+}
+
+.sun-icon { opacity: 0; }
+.moon-icon { opacity: 1; }
+
+#dark-toggle:checked + .dark-btn {
+    background: #020617;
+}
+
+#dark-toggle:checked + .dark-btn .moon-icon {
+    opacity: 0;
+    transform: rotate(-20deg) scale(0.8);
+}
+
+#dark-toggle:checked + .dark-btn .sun-icon {
+    opacity: 1;
+    transform: rotate(0) scale(1);
+}
+
+.dark-btn:hover {
+    background: #00bcd4;
+    transform: rotate(12deg);
+}
+
+/* =====================
+   NAVBAR
 ===================== */
 .navbar {
     position: sticky;
     top: 0;
     z-index: 100;
+    padding: 18px 70px;
+    background: rgba(15, 23, 42, 0.95);
+    backdrop-filter: blur(10px);
+
     display: flex;
     justify-content: space-between;
     align-items: center;
-    padding: 18px 70px;
-    background: rgba(17, 17, 17, 0.95);
-    backdrop-filter: blur(8px);
 }
 
 .logo {
     color: #fff;
     font-size: 22px;
+    font-weight: 700;
     letter-spacing: 1px;
 }
 
 .navbar nav a {
-    color: #ddd;
     margin-left: 22px;
     text-decoration: none;
     font-size: 15px;
+    color: #cbd5e1;
     position: relative;
-    transition: color 0.3s;
+    transition: color 0.3s ease;
 }
 
 .navbar nav a::after {
@@ -51,30 +108,30 @@ body {
     bottom: -6px;
     width: 0;
     height: 2px;
-    background: #00bcd4;
-    transition: width 0.3s;
+    background: #38bdf8;
+    transition: width 0.3s ease;
 }
 
 .navbar nav a:hover {
-    color: #00bcd4;
+    color: #38bdf8;
 }
 
 .navbar nav a:hover::after {
     width: 100%;
 }
 
-
 /* =====================
-   Hero Section
+   HERO
 ===================== */
 .hero {
     height: 92vh;
-    background: linear-gradient(135deg, #00bcd4, #3f51b5);
-    color: white;
+    background: linear-gradient(135deg, #2563eb, #0ea5e9);
+    color: #fff;
+
     display: flex;
     flex-direction: column;
-    justify-content: center;
     align-items: center;
+    justify-content: center;
     text-align: center;
 }
 
@@ -84,7 +141,7 @@ body {
 }
 
 .hero span {
-    color: #ffe082;
+    color: #fde68a;
 }
 
 .hero p {
@@ -93,55 +150,71 @@ body {
 
 .btn {
     margin-top: 25px;
-    padding: 14px 32px;
-    background: white;
-    color: #3f51b5;
-    text-decoration: none;
+    padding: 14px 34px;
+    background: #fff;
+    color: #2563eb;
     border-radius: 30px;
+    text-decoration: none;
     font-weight: 600;
+
     transition: all 0.3s ease;
 }
 
 .btn:hover {
-    transform: translateY(-3px);
-    box-shadow: 0 12px 30px rgba(0,0,0,0.2);
+    transform: translateY(-4px);
+    box-shadow: 0 12px 30px rgba(0,0,0,0.25);
 }
 
 /* =====================
-   Sections
+   SECTIONS
 ===================== */
 .section {
     padding: 90px 80px;
     text-align: center;
+    background: #f8fafc;
 }
 
 .section h2 {
     font-size: 32px;
-    margin-bottom: 20px;
+    margin-bottom: 18px;
 }
 
 .section p {
-    max-width: 700px;
+    max-width: 720px;
     margin: auto;
-    color: #555;
-}
-
-.bg {
-    background: #ffffff;
+    color: #475569;
 }
 
 /* =====================
-   Skills
+   PROFILE IMAGE
+===================== */
+.profile-img {
+    width: 150px;
+    height: 150px;
+    border-radius: 50%;
+    object-fit: cover;
+    margin-bottom: 20px;
+    border: 4px solid #fff;
+    box-shadow: 0 10px 30px rgba(0,0,0,0.3);
+    transition: transform 0.3s ease;
+}
+
+.profile-img:hover {
+    transform: scale(1.05);
+}
+
+/* =====================
+   SKILLS
 ===================== */
 .skills span {
     display: inline-block;
-    background: linear-gradient(135deg, #2196f3, #00bcd4);
-    color: white;
     padding: 10px 18px;
     margin: 8px;
-    border-radius: 25px;
     font-size: 14px;
-    transition: transform 0.3s;
+    color: #fff;
+    background: linear-gradient(135deg, #2563eb, #0ea5e9);
+    border-radius: 25px;
+    transition: transform 0.3s ease;
 }
 
 .skills span:hover {
@@ -149,20 +222,20 @@ body {
 }
 
 /* =====================
-   Projects
+   PROJECTS
 ===================== */
 .projects {
+    margin-top: 40px;
     display: flex;
     justify-content: center;
     gap: 25px;
     flex-wrap: wrap;
-    margin-top: 40px;
 }
 
 .card {
-    background: white;
-    padding: 25px;
     width: 270px;
+    padding: 25px;
+    background: #fff;
     border-radius: 16px;
     box-shadow: 0 10px 30px rgba(0,0,0,0.08);
     transition: all 0.3s ease;
@@ -170,7 +243,7 @@ body {
 
 .card:hover {
     transform: translateY(-8px);
-    box-shadow: 0 18px 40px rgba(0,0,0,0.15);
+    box-shadow: 0 18px 45px rgba(0,0,0,0.15);
 }
 
 .card h3 {
@@ -178,7 +251,7 @@ body {
 }
 
 /* =====================
-   Contact
+   CONTACT
 ===================== */
 .contact-form {
     max-width: 420px;
@@ -191,88 +264,89 @@ body {
     padding: 14px;
     margin-bottom: 15px;
     border-radius: 10px;
-    border: 1px solid #ddd;
+    border: 1px solid #cbd5e1;
     outline: none;
 }
 
 .contact-form input:focus,
 .contact-form textarea:focus {
-    border-color: #2196f3;
+    border-color: #2563eb;
 }
 
 .contact-form button {
     width: 100%;
     padding: 14px;
-    background: linear-gradient(135deg, #2196f3, #00bcd4);
-    color: white;
+    background: linear-gradient(135deg, #2563eb, #0ea5e9);
+    color: #fff;
     border: none;
     border-radius: 30px;
     font-size: 15px;
     cursor: pointer;
-    transition: all 0.3s;
+    transition: all 0.3s ease;
 }
 
 .contact-form button:hover {
     transform: translateY(-2px);
-    box-shadow: 0 10px 25px rgba(0,0,0,0.2);
+    box-shadow: 0 10px 25px rgba(0,0,0,0.25);
 }
 
 /* =====================
-   Footer
+   FOOTER
 ===================== */
 footer {
-    background: #0d0d0d;
-    color: #bbb;
+    background: #020617;
+    color: #9ca3af;
     text-align: center;
     padding: 30px 20px;
 }
 
 .footer-social a {
-    color: #aaa;
-    text-decoration: none;
-    font-weight: 500;
     margin: 0 8px;
-    transition: color 0.3s;
+    text-decoration: none;
+    color: #94a3b8;
+    transition: color 0.3s ease;
 }
 
 .footer-social a:hover {
-    color: #00bcd4;
-}
-
-.footer-social span {
-    color: #444;
+    color: #38bdf8;
 }
 
 /* =====================
-   Dark Mode
+   DARK MODE
 ===================== */
-#dark-toggle {
-    display: none;
+#dark-toggle:checked ~ .navbar {
+    background: #020617;
 }
 
-.dark-btn {
-    position: fixed;
-    top: 22px;
-    right: 22px;
-    background: #111;
-    color: white;
-    padding: 10px 12px;
-    border-radius: 50%;
-    cursor: pointer;
+#dark-toggle:checked ~ .hero {
+    background: linear-gradient(135deg, #0f172a, #020617);
 }
 
-#dark-toggle:checked ~ * {
-    background-color: #0f172a;
+#dark-toggle:checked ~ .section {
+    background: #020617;
     color: #e5e7eb;
 }
 
+#dark-toggle:checked ~ .section p {
+    color: #cbd5f5;
+}
+
+#dark-toggle:checked ~ .card {
+    background: #0f172a;
+    color: #e5e7eb;
+}
+
+#dark-toggle:checked ~ footer {
+    background: #020617;
+}
+
 /* =====================
-   Responsive
+   RESPONSIVE
 ===================== */
 @media (max-width: 768px) {
     .navbar {
-        flex-direction: column;
         padding: 16px 20px;
+        flex-direction: column;
     }
 
     .navbar nav {
@@ -291,188 +365,3 @@ footer {
         width: 90%;
     }
 }
-
-
-/* =====================
-   Dark Mode Styles
-===================== */
-
-#dark-toggle {
-    display: none;
-}
-
-/* Toggle button */
-.dark-btn {
-    position: fixed;
-    top: 22px;
-    right: 22px;
-    z-index: 999;
-    background: #111;
-    color: #fff;
-    padding: 10px 12px;
-    border-radius: 50%;
-    cursor: pointer;
-    font-size: 16px;
-}
-
-/* ===== Dark Theme ===== */
-#dark-toggle:checked ~ .navbar {
-    background: #020617;
-}
-
-#dark-toggle:checked ~ .hero {
-    background: linear-gradient(135deg, #0f172a, #020617);
-}
-
-#dark-toggle:checked ~ .section {
-    background: #020617;
-    color: #e5e7eb;
-}
-
-#dark-toggle:checked ~ .section p {
-    color: #cbd5f5;
-}
-
-#dark-toggle:checked ~ .bg {
-    background: #020617;
-}
-
-#dark-toggle:checked ~ .card {
-    background: #0f172a;
-    color: #e5e7eb;
-    box-shadow: 0 10px 30px rgba(0,0,0,0.6);
-}
-
-#dark-toggle:checked ~ footer {
-    background: #020617;
-    color: #9ca3af;
-}
-
-/* Skills dark */
-#dark-toggle:checked ~ .section .skills span {
-    background: linear-gradient(135deg, #2563eb, #0ea5e9);
-}
-
-/* Contact form dark */
-#dark-toggle:checked ~ .contact-form input,
-#dark-toggle:checked ~ .contact-form textarea {
-    background: #0f172a;
-    color: #e5e7eb;
-    border: 1px solid #334155;
-}
-
-#dark-toggle:checked ~ .contact-form button {
-    background: linear-gradient(135deg, #2563eb, #0ea5e9);
-}
-
-/* Footer links */
-#dark-toggle:checked ~ footer a {
-    color: #94a3b8;
-}
-
-#dark-toggle:checked ~ footer a:hover {
-    color: #38bdf8;
-}
-.dark-btn {
-    position: fixed;
-    top: 22px;
-    right: 22px;
-    z-index: 999;
-    width: 42px;
-    height: 42px;
-    background: #111;
-    color: #fff;
-    border-radius: 50%;
-    cursor: pointer;
-
-    display: flex;
-    align-items: center;
-    justify-content: center;
-
-    transition: all 0.3s ease;
-}
-
-.dark-btn i {
-    font-size: 16px;
-}
-
-/* Hover effect */
-.dark-btn:hover {
-    background: #00bcd4;
-    transform: rotate(15deg);
-}
-
-/* Dark mode active icon color */
-#dark-toggle:checked + .dark-btn {
-    background: #0f172a;
-    color: #38bdf8;
-}
-.dark-btn {
-    position: fixed;
-    top: 22px;
-    right: 22px;
-    z-index: 999;
-    width: 42px;
-    height: 42px;
-    background: #111;
-    color: #fff;
-    border-radius: 50%;
-    cursor: pointer;
-
-    display: flex;
-    align-items: center;
-    justify-content: center;
-
-    transition: all 0.3s ease;
-}
-
-.dark-btn i {
-    position: absolute;
-    font-size: 16px;
-    transition: all 0.3s ease;
-}
-
-/* Initially show moon, hide sun */
-.moon-icon {
-    opacity: 1;
-}
-.sun-icon {
-    opacity: 0;
-}
-
-/* On toggle: show sun, hide moon */
-#dark-toggle:checked + .dark-btn .moon-icon {
-    opacity: 0;
-    transform: rotate(-20deg) scale(0.8);
-}
-
-#dark-toggle:checked + .dark-btn .sun-icon {
-    opacity: 1;
-    transform: rotate(0deg) scale(1);
-}
-
-/* Hover effect */
-.dark-btn:hover {
-    background: #00bcd4;
-    transform: rotate(15deg);
-}
-/* =====================
-   Profile Image
-===================== */
-.profile-img {
-    width: 150px;            /* প্রয়োজনমতো size adjust করতে পারো */
-    height: 150px;
-    border-radius: 50%;      /* এটা circular করে দেয় */
-    object-fit: cover;       /* image properly fill করবে */
-    border: 4px solid #fff;  /* optional border */
-    margin-bottom: 20px;
-    box-shadow: 0 4px 20px rgba(0,0,0,0.3); /* optional shadow */
-    transition: transform 0.3s ease;
-}
-
-.profile-img:hover {
-    transform: scale(1.05);  /* hover effect optional */
-}
-
-
-
